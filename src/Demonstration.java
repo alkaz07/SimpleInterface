@@ -1,23 +1,33 @@
 import java.util.Scanner;
+
 //Сделайте интерфейс , в котором будет 1 метод "вычислить" с двумя целочисленными параметрами и целочисленным результатом
-interface ICalculator{
+interface ICalculator {
     int calc(int a, int b);
 }
+
 //Сделайте 4 класса, реализующих этот интерфейс:
-class Summator implements ICalculator{
-    public int calc(int a, int b) { return a+b; }
+class Summator implements ICalculator {
+    public int calc(int a, int b) {
+        return a + b;
+    }
 }
 
-class Substractor implements ICalculator{
-    public int calc(int a, int b) { return a-b; }
+class Substractor implements ICalculator {
+    public int calc(int a, int b) {
+        return a - b;
+    }
 }
 
-class Multiplier implements ICalculator{
-    public int calc(int a, int b) { return a*b; }
+class Multiplier implements ICalculator {
+    public int calc(int a, int b) {
+        return a * b;
+    }
 }
 
-class Divider implements ICalculator{
-    public int calc(int a, int b) { return a/b; }
+class Divider implements ICalculator {
+    public int calc(int a, int b) {
+        return a / b;
+    }
 }
 
 //Сделайте основной класс, где будет main, в котором
@@ -35,5 +45,23 @@ public class Demonstration {
         System.out.println(c1.calc(x, y));
         ICalculator c2 = new Multiplier();
         System.out.println(c2.calc(x, y));
+
+
+        ICalculator cx = (a, b) -> a * a + b * b; //лямбда-выражение заменяет длинное описание анонимного вложенного класса, реализующего интерфейс
+        System.out.println(cx.calc(x, y));
+
+        //сделать калькулятор, который будет возводить a в степень b
+        ICalculator cPower = (a, b) -> {
+            int z = 1;
+            for (int i = 0; i < b; i++) {
+                z *= a;
+            }
+            return z;
+        };
+        System.out.println("x в степени y " + cPower.calc(x, y));
+
     }
+
+
 }
+
